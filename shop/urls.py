@@ -7,4 +7,5 @@ urlpatterns = [
 	path('shop/contactus',views.cont,name='contact'),
 	path('shop/about',views.aboutpage, name='about'),
 	path('shop/tracker',views.tracker, name='tracker'),
+	path("handlerequest/", views.handlerequest, name="HandleRequest"),
 ]

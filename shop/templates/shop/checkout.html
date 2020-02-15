@@ -22,6 +22,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="hidden" name="items_json" id="items_json">
+                    <input type="hidden" name="amount" id="amount">
                     <label for="inputname">Name</label>
                     <input type="name" class="form-control" id="inputname" placeholder="Name" name="name" required="">
                 </div>
@@ -97,7 +98,7 @@ else{
     $('#items').append(mystr);
 }
     mypr = `<b><li class="list-group-item d-flex justify-content-between align-items-center">
-                    your Tatal price is <span class="badge badge-pill " >${pr}</span>
+                    your Tatal price is <span class="badge badge-pill " id="pr">${pr}</span>
                     <span class="badge badge-primary badge-pill" >${sum}</span>
                </li></b>`;
     $('#price').append(mypr);         
@@ -110,5 +111,6 @@ alert('your order successfull and you order id is {{id}}track your product with 
 localStorage.clear();
 document.location = "/";
 {% endif %}
+$('#amount').val($('#pr').html())
 </script>
 {% endblock %}
