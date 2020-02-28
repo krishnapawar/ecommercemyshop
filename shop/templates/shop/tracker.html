@@ -25,13 +25,11 @@
             </ul>
         </div>
     </div>
-        <h2>Your Ordered Items</h2>
-        <div class="my-4">
-            <ul class="list-group" id="citems">
-                
-            </ul>
-        </div>
-   
+    <h2>Your Ordered Items</h2>
+    <div class="my-4">
+        <ul class="list-group" id="citems">
+        </ul>
+    </div>
 </div>
 {% endblock %}
 {% block js %}
@@ -82,7 +80,7 @@ $('#trackerForm').submit(function(event) {
                 $('#items').append(mystr);
                 $('#citems').append(mystr);
             }
-           
+
         });
     event.preventDefault();
 });

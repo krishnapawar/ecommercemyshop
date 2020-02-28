@@ -8,4 +8,5 @@ urlpatterns = [
 	path('shop/about',views.aboutpage, name='about'),
 	path('shop/tracker',views.tracker, name='tracker'),
 	path("handlerequest/", views.handlerequest, name="HandleRequest"),
+	path('search/',views.searchn, name='search'),
 ]

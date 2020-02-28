@@ -11,14 +11,14 @@ MERCHANT_KEY = 'iDYIg1wOTSZrABAk'
 
 # Create your views here.
 def mainpage(request):
-	'''allProds = []
+	'''allprods = []
 	catprods = addproduct.objects.values('category', 'id')
 	cats = {item['category'] for item in catprods}
 	for cat in cats:
 		prod = addproduct.objects.filter(category=cat)
 		n = len(prod)
 		nSlides = n // 4 + ceil((n / 4) - (n // 4))
-		allProds.append([prod, range(1, nSlides), nSlides])'''
+		allprods.append([prod, range(1, nSlides), nSlides])'''
 	
 	allprods = []
 	catprods = addproduct.objects.values('category','id')
@@ -37,6 +37,32 @@ def mainpage(request):
 	print(products)'''
 	params = {'allprods':allprods}
 	return render(request,'shop/index.html',params)
+
+def searchMatch(query, item):
+    '''return true only if query matches the item'''
+    if query in item.desc or query in item.pro_name or query in item.category:
+        return True
+    else:
+        return False
+
+def searchn(request):
+    query = request.GET.get('search')
+    allprods = []
+    catprods = addproduct.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prodtemp = addproduct.objects.filter(category=cat)
+        prod = [item for item in prodtemp if searchMatch(query, item)]
+
+        n = len(prod)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        if len(prod) != 0:
+            allprods.append([prod, range(1, nSlides), nSlides])
+    params = {'allprods': allprods, "msg": ""}
+    if len(allprods) == 0 or len(query)<4:
+        params = {'msg': "Please make sure to enter relevant search query"}
+    return render(request, 'shop/search.html', params)
+
 
 def productview(request,prid):
 	product = addproduct.objects.filter(id = prid)

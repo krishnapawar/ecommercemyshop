@@ -2,35 +2,35 @@
 {% block contend %}
 {% load static %}
 <div class="container">
-	<div class="row">
-		<div class="col-md-4">
-			<img class="img-thumbnail my-2" src="/media/{{ products.pro_image}}">
-		</div>
-		<div class="col-md-6">
-			<h2>{{ products.pro_name }}</h2>
-			<p>{{ products.desc }}</p>
-			<table class="table">
-			<tr class="table">
-				<td>Price:-</td><td><b>{{ products.price }}Rs</b></td>
-			</tr>
-			<tr>
-				<td>{{ products.pub_date}}</td><td>{{ products.category }}</td>
-			</tr>
-			</table>
-  				<button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
-				</span>
-				<a href="product/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
-
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-thumbnail my-2" src="/media/{{ products.pro_image}}">
+        </div>
+        <div class="col-md-6">
+            <h2>{{ products.pro_name }}</h2>
+            <p>{{ products.desc }}</p>
+            <table class="table">
+                <tr class="table">
+                    <td>Price:-</td>
+                    <td><b>{{ products.price }}Rs</b></td>
+                </tr>
+                <tr>
+                    <td>{{ products.pub_date}}</td>
+                    <td>{{ products.category }}</td>
+                </tr>
+            </table>
+            <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+            </span>
+            <a href="product/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+        </div>
+    </div>
 </div>
-
 {% endblock %}
 {% block js %}
 <script type="text/javascript">
 // If the add to cart button is clicked, add/increment the item
 //$('.cart').click(function() {
-    $('.divpr').on('click', 'button.cart', function(){
+$('.divpr').on('click', 'button.cart', function() {
     var idstr = this.id.toString();
     if (cart[idstr] != undefined) {
         cart[idstr] = cart[idstr] + 1;
